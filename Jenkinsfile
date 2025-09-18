@@ -15,7 +15,7 @@ pipeline {
                 ansible --version
 
                 # run the playbook
-                ansible-playbook -i inventory playbook.yml
+                ansible-playbook -i inventory app-deployment.yml
                 '''
             }
         }
