@@ -1,16 +1,14 @@
 ---
-- name: Setup Docker and Deploy Web App
+- name: Deploy Web App using Docker
   hosts: webservers
   become: yes
+
   tasks:
-    - name: Install required packages
+    - name: Install Python3 pip
       apt:
-        name: "{{ item }}"
+        name: python3-pip
         state: present
         update_cache: yes
-      loop:
-        - python3-pip
-        - docker.io
 
     - name: Install Docker SDK for Python
       pip:
