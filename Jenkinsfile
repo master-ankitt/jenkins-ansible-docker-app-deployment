@@ -10,6 +10,7 @@ pipeline {
 
         stage('Deploy via Ansible to Node') {
             steps {
+               sshagent(['ssh-login']) {
                 sh '''
                 # optional: verify ansible version or connectivity
                 ansible --version
@@ -17,6 +18,7 @@ pipeline {
                 # run the playbook
                 ansible-playbook -i inventory app-deployment.yml
                 '''
+               }
             }
         }
     }
